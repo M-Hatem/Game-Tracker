@@ -45,6 +45,14 @@ export const SOURCES = {
     attribution: "Community deals from r/GameDeals",
     platforms: ["pc", "playstation", "xbox", "nintendo"],
   },
+  "steam-news": {
+    id: "steam-news",
+    name: "Steam News",
+    format: "rss",
+    homepage: "https://store.steampowered.com/news/app/593110",
+    attribution: "Sale & event announcements from Steam",
+    platforms: ["pc"],
+  },
 } as const satisfies Record<SourceId, SourceDefinition>;
 
 export const SOURCE_LIST: SourceDefinition[] = Object.values(SOURCES);
@@ -54,6 +62,9 @@ export const FEED_URLS = {
   lootscraper: "https://feed.phenx.de/lootscraper.xml",
   "ggdeals-freebies": "https://gg.deals/news/freebies/feed/",
   "reddit-gamedeals": "https://www.reddit.com/r/GameDeals/new/.rss",
+  // Valve's official "Steam News" hub (app 593110): seasonal sales, fests, store events.
+  // Same pattern works for any game: /feeds/news/app/<appid>/
+  "steam-news": "https://store.steampowered.com/feeds/news/app/593110/?cc=US&l=english",
 } as const satisfies Partial<Record<SourceId, string>>;
 
 export const API_URLS = {

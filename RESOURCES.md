@@ -4,37 +4,51 @@ Checked October 2026. Feeds move; if one breaks, the app marks it "unavailable" 
 
 ## Sale & freebie RSS feeds
 
-| Feed | URL | Covers | In app |
-| --- | --- | --- | --- |
-| LootScraper — all free offers | https://feed.phenx.de/lootscraper.xml | Epic, Steam, GOG, Amazon Prime, Humble, itch.io, iOS, Android | ✅ |
-| LootScraper — Epic | https://feed.phenx.de/lootscraper_epic_game.xml | Epic Games Store | |
-| LootScraper — Steam games | https://feed.phenx.de/lootscraper_steam_game.xml | Steam | |
-| LootScraper — Steam loot | https://feed.phenx.de/lootscraper_steam_loot.xml | Steam in-game items | |
-| LootScraper — GOG | https://feed.phenx.de/lootscraper_gog_game.xml | GOG | |
-| LootScraper — Amazon Prime games | https://feed.phenx.de/lootscraper_amazon_game.xml | Prime Gaming | |
-| LootScraper — Humble | https://feed.phenx.de/lootscraper_humble_game.xml | Humble | |
-| LootScraper — Android | https://feed.phenx.de/lootscraper_google_game.xml | Google Play | |
-| LootScraper — iOS | https://feed.phenx.de/lootscraper_apple_game.xml | App Store | |
-| GG.deals — freebies | https://gg.deals/news/freebies/feed/ | All platforms incl. consoles | ✅ |
-| GG.deals — news (US) | https://gg.deals/us/news/feed/ | Deal news, sales events | |
-| GG.deals — news (EU) | https://gg.deals/eu/news/feed/ | Same, EU pricing | |
-| r/GameDeals — new | https://www.reddit.com/r/GameDeals/new/.rss | Community deals, all stores | ✅ |
-| r/FreeGameFindings — new | https://www.reddit.com/r/FreeGameFindings/new/.rss | Free games | |
-| r/PS5 deals / r/NintendoSwitchDeals | `https://www.reddit.com/r/<sub>/new/.rss` | Console-specific | |
+| Feed                                | URL                                                | Covers                                                        | In app |
+| ----------------------------------- | -------------------------------------------------- | ------------------------------------------------------------- | ------ |
+| LootScraper — all free offers       | https://feed.phenx.de/lootscraper.xml              | Epic, Steam, GOG, Amazon Prime, Humble, itch.io, iOS, Android | ✅     |
+| LootScraper — Epic                  | https://feed.phenx.de/lootscraper_epic_game.xml    | Epic Games Store                                              |        |
+| LootScraper — Steam games           | https://feed.phenx.de/lootscraper_steam_game.xml   | Steam                                                         |        |
+| LootScraper — Steam loot            | https://feed.phenx.de/lootscraper_steam_loot.xml   | Steam in-game items                                           |        |
+| LootScraper — GOG                   | https://feed.phenx.de/lootscraper_gog_game.xml     | GOG                                                           |        |
+| LootScraper — Amazon Prime games    | https://feed.phenx.de/lootscraper_amazon_game.xml  | Prime Gaming                                                  |        |
+| LootScraper — Humble                | https://feed.phenx.de/lootscraper_humble_game.xml  | Humble                                                        |        |
+| LootScraper — Android               | https://feed.phenx.de/lootscraper_google_game.xml  | Google Play                                                   |        |
+| LootScraper — iOS                   | https://feed.phenx.de/lootscraper_apple_game.xml   | App Store                                                     |        |
+| GG.deals — freebies                 | https://gg.deals/news/freebies/feed/               | All platforms incl. consoles                                  | ✅     |
+| GG.deals — news (US)                | https://gg.deals/us/news/feed/                     | Deal news, sales events                                       |        |
+| GG.deals — news (EU)                | https://gg.deals/eu/news/feed/                     | Same, EU pricing                                              |        |
+| r/GameDeals — new                   | https://www.reddit.com/r/GameDeals/new/.rss        | Community deals, all stores                                   | ✅     |
+| r/FreeGameFindings — new            | https://www.reddit.com/r/FreeGameFindings/new/.rss | Free games                                                    |        |
+| r/PS5 deals / r/NintendoSwitchDeals | `https://www.reddit.com/r/<sub>/new/.rss`          | Console-specific                                              |        |
 
 Any subreddit works as RSS by appending `/new/.rss`. For sites without a feed (e.g. Deku Deals, PSPrices), an RSS bridge like rss-bridge.org or rss.app can generate one.
 
+### Steam
+
+Steam has no official "specials" feed. Steam's own prices come into the app through CheapShark (Steam is one of its stores). These are the useful Steam RSS feeds:
+
+| Feed                                       | URL                                                                      | In app                  |
+| ------------------------------------------ | ------------------------------------------------------------------------ | ----------------------- |
+| Steam News (official sales, fests, events) | https://store.steampowered.com/feeds/news/app/593110/?cc=US&l=english    | ✅                      |
+| Any game's news / patch notes              | `https://store.steampowered.com/feeds/news/app/<appid>/?cc=US&l=english` |                         |
+| Steam free games (LootScraper)             | https://feed.phenx.de/lootscraper_steam_game.xml                         | via the all-offers feed |
+| Steam free in-game loot (LootScraper)      | https://feed.phenx.de/lootscraper_steam_loot.xml                         |                         |
+| A Steam group's announcements              | `https://steamcommunity.com/groups/<group>/rss/`                         |                         |
+
+The per-game news feed is what the progress tracker can use later to show patch notes for games in a user's library.
+
 ## Deal & game data APIs (JSON)
 
-| API | What | Key needed |
-| --- | --- | --- |
-| CheapShark — https://apidocs.cheapshark.com | PC prices across ~30 stores, price history | No (use their redirect links) — ✅ in app |
-| GamerPower — https://www.gamerpower.com/api-read | Giveaways for PC, PS, Xbox, Switch, mobile | No (attribute them) — ✅ in app |
-| IsThereAnyDeal API — https://docs.isthereanydeal.com | PC prices, historical lows, bundles, waitlists | Free key |
-| IGDB (Twitch) — https://api-docs.igdb.com | Game metadata, covers, release dates | Free Twitch app |
-| RAWG — https://rawg.io/apidocs | Game metadata (simpler than IGDB) | Free key |
-| Steam Web API — https://steamcommunity.com/dev | Owned games, playtime, achievements | Free key |
-| RetroAchievements — https://api-docs.retroachievements.org | Retro progress | Free key |
+| API                                                        | What                                           | Key needed                                |
+| ---------------------------------------------------------- | ---------------------------------------------- | ----------------------------------------- |
+| CheapShark — https://apidocs.cheapshark.com                | PC prices across ~30 stores, price history     | No (use their redirect links) — ✅ in app |
+| GamerPower — https://www.gamerpower.com/api-read           | Giveaways for PC, PS, Xbox, Switch, mobile     | No (attribute them) — ✅ in app           |
+| IsThereAnyDeal API — https://docs.isthereanydeal.com       | PC prices, historical lows, bundles, waitlists | Free key                                  |
+| IGDB (Twitch) — https://api-docs.igdb.com                  | Game metadata, covers, release dates           | Free Twitch app                           |
+| RAWG — https://rawg.io/apidocs                             | Game metadata (simpler than IGDB)              | Free key                                  |
+| Steam Web API — https://steamcommunity.com/dev             | Owned games, playtime, achievements            | Free key                                  |
+| RetroAchievements — https://api-docs.retroachievements.org | Retro progress                                 | Free key                                  |
 
 ## GitHub repos worth bookmarking
 

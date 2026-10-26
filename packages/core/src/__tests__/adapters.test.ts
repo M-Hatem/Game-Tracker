@@ -53,6 +53,32 @@ describe("rss adapter", () => {
     expect(deal).toMatchObject({ store: "Steam", kind: "sale", platforms: ["pc"] });
     expect(deal?.price?.discountPct).toBe(50);
   });
+
+  it("applies fixed store/platform for single-store feeds like Steam News", () => {
+    const steamXml = `<?xml version="1.0"?><rss version="2.0"><channel>
+      <item>
+        <title>The Steam Autumn Sale is live</title>
+        <link>https://store.steampowered.com/news/app/593110/view/123</link>
+        <guid>123</guid>
+        <pubDate>Tue, 25 Nov 2026 18:00:00 GMT</pubDate>
+        <enclosure url="https://clan.akamai.steamstatic.com/images/sale.png" type="image/png"/>
+      </item>
+      <item>
+        <title>Next Fest: Thousands of demos</title>
+        <link>https://store.steampowered.com/news/app/593110/view/124</link>
+      </item>
+    </channel></rss>`;
+    const deals = feedEntriesToDeals(parseFeed(steamXml), {
+      sourceId: "steam-news",
+      url: "x",
+      defaultKind: "news",
+      store: "Steam",
+      platforms: ["pc"],
+    });
+    expect(deals).toHaveLength(2);
+    expect(deals[1]).toMatchObject({ kind: "news", store: "Steam", platforms: ["pc"] });
+    expect(deals[0]?.imageUrl).toBe("https://clan.akamai.steamstatic.com/images/sale.png");
+  });
 });
 
 describe("cheapshark adapter", () => {

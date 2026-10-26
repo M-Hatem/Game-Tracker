@@ -45,7 +45,8 @@ export type SourceId =
   | "gamerpower"
   | "lootscraper"
   | "ggdeals-freebies"
-  | "reddit-gamedeals";
+  | "reddit-gamedeals"
+  | "steam-news";
 
 export type SourceFormat = "json-api" | "rss";
 

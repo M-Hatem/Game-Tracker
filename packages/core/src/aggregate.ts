@@ -24,6 +24,19 @@ export const LOADERS: Record<SourceId, Loader> = {
       f,
       i,
     ),
+  "steam-news": (f, i) =>
+    fetchRss(
+      {
+        sourceId: "steam-news",
+        url: FEED_URLS["steam-news"],
+        defaultKind: "news",
+        limit: 10,
+        store: "Steam",
+        platforms: ["pc"],
+      },
+      f,
+      i,
+    ),
 };
 
 export interface AggregateOptions {

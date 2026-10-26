@@ -1,5 +1,5 @@
 import { XMLParser } from "fast-xml-parser";
-import type { Deal, DealKind, Fetcher, SourceId } from "../types";
+import type { Deal, DealKind, Fetcher, Platform, SourceId } from "../types";
 import {
   detectPlatforms,
   isHttpUrl,
@@ -104,6 +104,10 @@ export interface RssSourceConfig {
   url: string;
   defaultKind: DealKind;
   limit?: number;
+  /** Fixed store for single-store feeds (e.g. Steam); otherwise parsed from `[Store]` titles. */
+  store?: string;
+  /** Fixed platforms for single-platform feeds; otherwise detected from title/categories. */
+  platforms?: Platform[];
 }
 
 /** Turn generic feed entries into deals, inferring store/platform/discount. */
@@ -118,8 +122,8 @@ export function feedEntriesToDeals(entries: FeedEntry[], config: RssSourceConfig
       kind,
       title: e.title,
       url: e.link,
-      store: storeFromBracketTitle(e.title),
-      platforms: detectPlatforms(e.title, e.categories.join(" ")),
+      store: config.store ?? storeFromBracketTitle(e.title),
+      platforms: config.platforms ?? detectPlatforms(e.title, e.categories.join(" ")),
       price: discountPct ? { discountPct, currency: "USD" } : undefined,
       imageUrl: e.imageUrl,
       publishedAt: e.publishedAt,

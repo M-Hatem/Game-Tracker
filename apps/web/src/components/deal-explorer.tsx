@@ -12,7 +12,7 @@ const PLATFORM_FILTERS: Array<Platform | "all"> = [
   "nintendo",
   "mobile",
 ];
-const KIND_FILTERS: Array<DealKind | "all"> = ["all", "sale", "free", "giveaway"];
+const KIND_FILTERS: Array<DealKind | "all"> = ["all", "sale", "free", "giveaway", "news"];
 const PAGE_SIZE = 24;
 
 function Chip({
