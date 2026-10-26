@@ -1,0 +1,26 @@
+{
+  "name": "game-tracker",
+  "private": true,
+  "license": "UNLICENSED",
+  "description": "Game progress tracker and cross-platform sales hub (web → mobile → desktop).",
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "pnpm --filter @gt/web start",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "ci": "biome ci . && turbo run typecheck test build"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.3",
+    "turbo": "2.11.10",
+    "typescript": "7.0.2"
+  }
+}

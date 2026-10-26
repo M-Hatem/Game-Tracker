@@ -1,0 +1,9 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+# Only these packages may run install scripts (supply-chain hardening).
+onlyBuiltDependencies:
+  - sharp
+  - "@biomejs/biome"
+  - "@tailwindcss/oxide"

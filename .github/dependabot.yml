@@ -1,0 +1,13 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule: { interval: weekly }
+    groups:
+      next-react:
+        patterns: ["next", "react", "react-dom", "@types/react*"]
+      tooling:
+        patterns: ["@biomejs/*", "turbo", "typescript", "vitest", "tailwindcss", "@tailwindcss/*"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: { interval: monthly }
