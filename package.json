@@ -19,8 +19,8 @@
     "ci": "biome ci . && turbo run typecheck test build"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.3",
-    "turbo": "2.11.10",
+    "@biomejs/biome": "2.6.7",
+    "turbo": "2.11.11",
     "typescript": "7.0.2"
   }
 }
